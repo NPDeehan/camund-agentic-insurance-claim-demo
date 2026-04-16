@@ -1,0 +1,88 @@
+{
+  "$schema": "https://unpkg.com/@camunda/zeebe-element-templates-json-schema/resources/schema.json",
+  "name": "Request Documents Template",
+  "id": "Template_0o5bws7",
+  "appliesTo": [
+    "bpmn:Activity"
+  ],
+  "elementType": {
+    "value": "bpmn:CallActivity"
+  },
+  "groups": [
+    {
+      "id": "templated-properties",
+      "label": "Templated properties",
+      "openByDefault": true
+    }
+  ],
+  "category": {
+    "id": "templates",
+    "name": "Templates"
+  },
+  "properties": [
+    {
+      "type": "String",
+      "value": "RequestDocumentCustomer",
+      "binding": {
+        "type": "zeebe:calledElement",
+        "property": "processId"
+      },
+      "label": "Called Process ID",
+      "description": "ID of the process to be called by this call activity",
+      "group": "templated-properties"
+    },
+    {
+      "label": "Source variable for sendEmailRequest",
+      "type": "String",
+      "value": "=fromAi(toolCall.sendEmailRequest, \"This is a boolean value set to true if you would like email a customer requesting the document and false if you already have the document and just need it processed\", \"boolean\")",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "sendEmailRequest"
+      },
+      "group": "templated-properties"
+    },
+    {
+      "label": "Source variable for customerEmail",
+      "type": "String",
+      "value": "=currentEmail.fromAddress",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "customerEmail"
+      },
+      "group": "templated-properties"
+    },
+    {
+      "label": "Source variable for emailBody",
+      "type": "String",
+      "value": "=fromAi(toolCall.emailRequestBody, \"This is the body of the email that will be sent to request a document. Must be formatted in plain text, if you don't need to request a document it is null\", \"string\")",
+      "feel": "required",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "emailBody"
+      },
+      "group": "templated-properties"
+    },
+    {
+      "label": "Target variable for ={\n  \"nameOnDocument\" : nameOnID,\n  \"DocumentType\" : idType,\n  \"DocumentexpiryDate\" : expiryDate,\n  \"DocumentNumber\" : idNumber,\n  \"SystemInformation\" : systemNote\n}",
+      "type": "String",
+      "value": "toolCallResult",
+      "binding": {
+        "type": "zeebe:output",
+        "source": "={\n  \"nameOnDocument\" : nameOnID,\n  \"DocumentType\" : idType,\n  \"DocumentexpiryDate\" : expiryDate,\n  \"DocumentNumber\" : idNumber,\n  \"SystemInformation\" : systemNote\n}"
+      },
+      "group": "templated-properties"
+    },
+    {
+      "label": "Binding",
+      "description": "Binding type for the external resource",
+      "type": "Hidden",
+      "value": "latest",
+      "binding": {
+        "type": "zeebe:calledElement",
+        "property": "bindingType"
+      }
+    }
+  ]
+}

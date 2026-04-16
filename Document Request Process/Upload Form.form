@@ -1,0 +1,64 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "ce5fd89"
+  },
+  "schemaVersion": 19,
+  "id": "upload-form-0",
+  "components": [
+    {
+      "text": "# Upload your ID",
+      "type": "text",
+      "layout": {
+        "row": "Row_1e9v9za",
+        "columns": null
+      },
+      "id": "Field_1idcc1d"
+    },
+    {
+      "label": "Email Details",
+      "components": [
+        {
+          "label": "EmailAddress",
+          "type": "textfield",
+          "layout": {
+            "row": "Row_14r2c9n",
+            "columns": null
+          },
+          "id": "Field_0zmcozd",
+          "key": "customerEmail",
+          "validate": {
+            "required": true,
+            "validationType": "email"
+          }
+        },
+        {
+          "label": "Email Body",
+          "type": "textarea",
+          "layout": {
+            "row": "Row_14r2c9n",
+            "columns": null
+          },
+          "id": "Field_1p310pm",
+          "key": "emailBody",
+          "validate": {
+            "required": true
+          }
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "Row_1mp860m",
+        "columns": null
+      },
+      "id": "Field_1wsu5kh",
+      "conditional": {
+        "hide": "=not(sendEmailRequest)"
+      }
+    }
+  ],
+  "type": "default"
+}

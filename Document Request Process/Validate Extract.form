@@ -1,0 +1,84 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.7.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "ce5fd89"
+  },
+  "schemaVersion": 18,
+  "id": "Validate-extract-0",
+  "components": [
+    {
+      "text": "# What does this document say?",
+      "type": "text",
+      "layout": {
+        "row": "Row_0ckne2j",
+        "columns": null
+      },
+      "id": "Field_0jry3bt"
+    },
+    {
+      "label": "Document preview",
+      "type": "documentPreview",
+      "layout": {
+        "row": "Row_1rm1x9s",
+        "columns": null
+      },
+      "id": "Field_0znzpny",
+      "dataSource": "=document"
+    },
+    {
+      "label": "Full Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0t2zt3y",
+        "columns": null
+      },
+      "id": "Field_1htiasc",
+      "key": "nameOnID"
+    },
+    {
+      "label": "Expiry Date",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0t2zt3y",
+        "columns": null
+      },
+      "id": "Field_0po3ezx",
+      "key": "expiryDate"
+    },
+    {
+      "label": "ID Type",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1qb1y8x",
+        "columns": null
+      },
+      "id": "Field_0mwmrjw",
+      "key": "idType",
+      "description": "State ID, Driver Licence etc."
+    },
+    {
+      "label": "ID Number",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_12qk301",
+        "columns": null
+      },
+      "id": "Field_0wb1ihu",
+      "key": "idNumber"
+    },
+    {
+      "label": "This Data is Correct",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_1rdl8zo",
+        "columns": null
+      },
+      "id": "Field_0tlrfni",
+      "key": "dataExtracted",
+      "description": "Tick this to confirm the data matches the document"
+    }
+  ],
+  "type": "default"
+}

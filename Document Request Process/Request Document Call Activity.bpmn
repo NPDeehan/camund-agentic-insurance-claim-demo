@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="882a44a" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.8.0">
+  <bpmn:process id="Process_16ujma0" name="Request Document Call Activity" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_1mw4nxe</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_0hn11z3">
+      <bpmn:incoming>Flow_0u4v70y</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1mw4nxe" sourceRef="StartEvent_1" targetRef="Activity_0nv4bea" />
+    <bpmn:callActivity id="Activity_0nv4bea" name="Request Documents">
+      <bpmn:documentation>This tool is used to request that a Customer sends their ID so that their identitiy can be varified</bpmn:documentation>
+      <bpmn:extensionElements>
+        <zeebe:calledElement processId="RequestDocumentCustomer" propagateAllChildVariables="true" propagateAllParentVariables="false" />
+        <zeebe:ioMapping>
+          <zeebe:input source="=fromAi(toolCall.sendEmailRequest, &#34;This is a boolean value set to true if you would like email a customer requesting the document and false if you already have the document and just need it processed&#34;, &#34;boolean&#34;)" target="sendEmailRequest" />
+          <zeebe:input source="=currentEmail.fromAddress" target="customerEmail" />
+          <zeebe:input source="=fromAi(toolCall.emailRequestBody, &#34;This is the body of the email that will be sent to request a document. Must be formatted in plain text, if you don&#39;t need to request a document it is null&#34;, &#34;string&#34;)" target="emailBody" />
+          <zeebe:output source="={&#10;  &#34;nameOnDocument&#34; : nameOnID,&#10;  &#34;DocumentType&#34; : idType,&#10;  &#34;DocumentexpiryDate&#34; : expiryDate,&#10;  &#34;DocumentNumber&#34; : idNumber,&#10;  &#34;SystemInformation&#34; : systemNote&#10;}" target="toolCallResult" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1mw4nxe</bpmn:incoming>
+      <bpmn:outgoing>Flow_0u4v70y</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:boundaryEvent id="Event_1cj09i2" attachedToRef="Activity_0nv4bea">
+      <bpmn:errorEventDefinition id="ErrorEventDefinition_108m88u" />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_0u4v70y" sourceRef="Activity_0nv4bea" targetRef="Event_0hn11z3" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_16ujma0">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="150" y="100" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0hn11z3_di" bpmnElement="Event_0hn11z3">
+        <dc:Bounds x="412" y="100" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0cvw922" bpmnElement="Activity_0nv4bea">
+        <dc:Bounds x="245" y="78" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_05m0lhi" bpmnElement="Event_1cj09i2">
+        <dc:Bounds x="252" y="140" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1mw4nxe_di" bpmnElement="Flow_1mw4nxe">
+        <di:waypoint x="186" y="118" />
+        <di:waypoint x="245" y="118" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0u4v70y_di" bpmnElement="Flow_0u4v70y">
+        <di:waypoint x="345" y="118" />
+        <di:waypoint x="412" y="118" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,42 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "ce5fd89"
+  },
+  "schemaVersion": 19,
+  "id": "ask-for-clarifications-00bcxkn",
+  "components": [
+    {
+      "text": "=questionForClerk",
+      "type": "text",
+      "layout": {
+        "row": "Row_10m8y46",
+        "columns": null
+      },
+      "id": "Field_0u95vi5"
+    },
+    {
+      "label": "Answer from Clerk",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1d1j0sk",
+        "columns": null
+      },
+      "id": "Field_1y1roqp",
+      "key": "answerFromClerk"
+    },
+    {
+      "label": "Cancel Application",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_1xiqhht",
+        "columns": null
+      },
+      "id": "Field_004rjh3",
+      "key": "cancelApplication"
+    }
+  ],
+  "type": "default"
+}

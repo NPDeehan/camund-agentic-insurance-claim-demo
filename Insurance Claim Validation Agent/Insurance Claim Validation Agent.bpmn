@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="ce5fd89" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.8.0">
+  <bpmn:process id="InsuranceClaimValidationAgent" name="Insurance Claim Validation Agent" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Claim Has come in">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formId="Form_1cdxgus" />
+        <zeebe:ioMapping>
+          <zeebe:output source="=substring(replace(uuid(), &#34;-&#34;, &#34;&#34;), 1, 9)" target="applicationId" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_0kuwke0</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0kuwke0" sourceRef="StartEvent_1" targetRef="Activity_1pwpm2k" />
+    <bpmn:adHocSubProcess id="Activity_1pwpm2k" name="Claim Validation Agent" zeebe:modelerTemplate="Template_02ypy9o" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiNBNTZFRkYiLz4KPG1hc2sgaWQ9InBhdGgtMi1vdXRzaWRlLTFfMTg1XzYiIG1hc2tVbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjQiIHk9IjQiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0iYmxhY2siPgo8cmVjdCBmaWxsPSJ3aGl0ZSIgeD0iNCIgeT0iNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ii8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjAuMDEwNSAxMi4wOTg3QzE4LjQ5IDEwLjU4OTQgMTcuMTU5NCA4LjEwODE0IDE2LjE3OTkgNi4wMTEwM0MxNi4xNTIgNi4wMDQ1MSAxNi4xMTc2IDYgMTYuMDc5NCA2QzE2LjA0MTEgNiAxNi4wMDY2IDYuMDA0NTEgMTUuOTc4OCA2LjAxMTA0QzE0Ljk5OTQgOC4xMDgxNCAxMy42Njk3IDEwLjU4ODkgMTIuMTQ4MSAxMi4wOTgxQzEwLjYyNjkgMTMuNjA3MSA4LjEyNTY4IDE0LjkyNjQgNi4wMTE1NyAxNS44OTgxQzYuMDA0NzQgMTUuOTI2MSA2IDE1Ljk2MTEgNiAxNkM2IDE2LjAzODcgNi4wMDQ2OCAxNi4wNzM2IDYuMDExNDQgMTYuMTAxNEM4LjEyNTE5IDE3LjA3MjkgMTAuNjI2MiAxOC4zOTE5IDEyLjE0NzcgMTkuOTAxNkMxMy42Njk3IDIxLjQxMDcgMTQuOTk5NiAyMy44OTIgMTUuOTc5MSAyNS45ODlDMTYuMDA2OCAyNS45OTU2IDE2LjA0MTEgMjYgMTYuMDc5MyAyNkMxNi4xMTc1IDI2IDE2LjE1MTkgMjUuOTk1NCAxNi4xNzk2IDI1Ljk4OUMxNy4xNTkxIDIzLjg5MiAxOC40ODg4IDIxLjQxMSAyMC4wMDk5IDE5LjkwMjFNMjAuMDA5OSAxOS45MDIxQzIxLjUyNTMgMTguMzk4NyAyMy45NDY1IDE3LjA2NjkgMjUuOTkxNSAxNi4wODI0QzI1Ljk5NjUgMTYuMDU5MyAyNiAxNi4wMzEgMjYgMTUuOTk5N0MyNiAxNS45Njg0IDI1Ljk5NjUgMTUuOTQwMyAyNS45OTE1IDE1LjkxNzFDMjMuOTQ3NCAxNC45MzI3IDIxLjUyNTkgMTMuNjAxIDIwLjAxMDUgMTIuMDk4NyIvPgo8L21hc2s+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjAuMDEwNSAxMi4wOTg3QzE4LjQ5IDEwLjU4OTQgMTcuMTU5NCA4LjEwODE0IDE2LjE3OTkgNi4wMTEwM0MxNi4xNTIgNi4wMDQ1MSAxNi4xMTc2IDYgMTYuMDc5NCA2QzE2LjA0MTEgNiAxNi4wMDY2IDYuMDA0NTEgMTUuOTc4OCA2LjAxMTA0QzE0Ljk5OTQgOC4xMDgxNCAxMy42Njk3IDEwLjU4ODkgMTIuMTQ4MSAxMi4wOTgxQzEwLjYyNjkgMTMuNjA3MSA4LjEyNTY4IDE0LjkyNjQgNi4wMTE1NyAxNS44OTgxQzYuMDA0NzQgMTUuOTI2MSA2IDE1Ljk2MTEgNiAxNkM2IDE2LjAzODcgNi4wMDQ2OCAxNi4wNzM2IDYuMDExNDQgMTYuMTAxNEM4LjEyNTE5IDE3LjA3MjkgMTAuNjI2MiAxOC4zOTE5IDEyLjE0NzcgMTkuOTAxNkMxMy42Njk3IDIxLjQxMDcgMTQuOTk5NiAyMy44OTIgMTUuOTc5MSAyNS45ODlDMTYuMDA2OCAyNS45OTU2IDE2LjA0MTEgMjYgMTYuMDc5MyAyNkMxNi4xMTc1IDI2IDE2LjE1MTkgMjUuOTk1NCAxNi4xNzk2IDI1Ljk4OUMxNy4xNTkxIDIzLjg5MiAxOC40ODg4IDIxLjQxMSAyMC4wMDk5IDE5LjkwMjFNMjAuMDA5OSAxOS45MDIxQzIxLjUyNTMgMTguMzk4NyAyMy45NDY1IDE3LjA2NjkgMjUuOTkxNSAxNi4wODI0QzI1Ljk5NjUgMTYuMDU5MyAyNiAxNi4wMzEgMjYgMTUuOTk5N0MyNiAxNS45Njg0IDI1Ljk5NjUgMTUuOTQwMyAyNS45OTE1IDE1LjkxNzFDMjMuOTQ3NCAxNC45MzI3IDIxLjUyNTkgMTMuNjAxIDIwLjAxMDUgMTIuMDk4NyIgZmlsbD0id2hpdGUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMC4wMTA1IDEyLjA5ODdDMTguNDkgMTAuNTg5NCAxNy4xNTk0IDguMTA4MTQgMTYuMTc5OSA2LjAxMTAzQzE2LjE1MiA2LjAwNDUxIDE2LjExNzYgNiAxNi4wNzk0IDZDMTYuMDQxMSA2IDE2LjAwNjYgNi4wMDQ1MSAxNS45Nzg4IDYuMDExMDRDMTQuOTk5NCA4LjEwODE0IDEzLjY2OTcgMTAuNTg4OSAxMi4xNDgxIDEyLjA5ODFDMTAuNjI2OSAxMy42MDcxIDguMTI1NjggMTQuOTI2NCA2LjAxMTU3IDE1Ljg5ODFDNi4wMDQ3NCAxNS45MjYxIDYgMTUuOTYxMSA2IDE2QzYgMTYuMDM4NyA2LjAwNDY4IDE2LjA3MzYgNi4wMTE0NCAxNi4xMDE0QzguMTI1MTkgMTcuMDcyOSAxMC42MjYyIDE4LjM5MTkgMTIuMTQ3NyAxOS45MDE2QzEzLjY2OTcgMjEuNDEwNyAxNC45OTk2IDIzLjg5MiAxNS45NzkxIDI1Ljk4OUMxNi4wMDY4IDI1Ljk5NTYgMTYuMDQxMSAyNiAxNi4wNzkzIDI2QzE2LjExNzUgMjYgMTYuMTUxOSAyNS45OTU0IDE2LjE3OTYgMjUuOTg5QzE3LjE1OTEgMjMuODkyIDE4LjQ4ODggMjEuNDExIDIwLjAwOTkgMTkuOTAyMU0yMC4wMDk5IDE5LjkwMjFDMjEuNTI1MyAxOC4zOTg3IDIzLjk0NjUgMTcuMDY2OSAyNS45OTE1IDE2LjA4MjRDMjUuOTk2NSAxNi4wNTkzIDI2IDE2LjAzMSAyNiAxNS45OTk3QzI2IDE1Ljk2ODQgMjUuOTk2NSAxNS45NDAzIDI1Ljk5MTUgMTUuOTE3MUMyMy45NDc0IDE0LjkzMjcgMjEuNTI1OSAxMy42MDEgMjAuMDEwNSAxMi4wOTg3IiBzdHJva2U9IiM0OTFEOEIiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFzaz0idXJsKCNwYXRoLTItb3V0c2lkZS0xXzE4NV82KSIvPgo8L3N2Zz4K">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda.agenticai:aiagent-job-worker:1" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="bedrock" target="provider.type" />
+          <zeebe:input source="{{secrets.AWS_REGION}}" target="provider.bedrock.region" />
+          <zeebe:input source="credentials" target="provider.bedrock.authentication.type" />
+          <zeebe:input source="{{secrets.AWS_ACCESS_KEY }}" target="provider.bedrock.authentication.accessKey" />
+          <zeebe:input source="{{secrets.AWS_SECRET_KEY}}" target="provider.bedrock.authentication.secretKey" />
+          <zeebe:input source="us.anthropic.claude-haiku-4-5-20251001-v1:0" target="provider.bedrock.model.model" />
+          <zeebe:input source="=20000" target="provider.bedrock.model.parameters.maxTokens" />
+          <zeebe:input source="=&#34;You are an Insurance Claims Processing Agent operating within a Camunda-orchestrated workflow. Your job is to receive inbound requests, determine whether they contain an insurance claim, and — if they do — execute the full claims intake process: retrieving applicable procedures, validating the claim, and producing a structured report for a human clerk to review and act upon.&#10;&#10;You work as part of an automated pipeline. You do not approve or deny claims. You gather, validate, and report. Final decisions belong to the clerk **NEVER** finish withou presenting your findings to the clerk for final approval.&#10;&#10;If for any reason you are unable to fulfil a request that appears in scope or there&#39;s confusing or contradictory requirements reach out to the backoffice clerk for clarifications&#10;&#10;Tools are provided, you should prefer them instead of guessing an answer. You can call the same tool multiple times by providing different input values. Don&#39;t guess any tools which were not explicitly configured. If no tool matches the request, try to generate an answer. If you&#39;re not able to find a good answer, return with a message stating why you&#39;re not able to.&#10;&#10;Wrap minimal, inspectable reasoning in *exactly* this XML template:&#10;&#10;&#60;thinking&#62;&#10;&#60;context&#62;…briefly state the customer’s need and current state…&#60;/context&#62;&#10;&#60;reflection&#62;…list candidate tools, justify which you will call next and why…&#60;/reflection&#62;&#10;&#60;/thinking&#62;&#10;&#10;Reveal **no** additional private reasoning outside these tags.&#34;" target="data.systemPrompt.prompt" />
+          <zeebe:input source="=&#34;here is the email we recieved: &#34; + string(claim)" target="data.userPrompt.prompt" />
+          <zeebe:input target="agentContext" />
+          <zeebe:input source="in-process" target="data.memory.storage.type" />
+          <zeebe:input source="=20" target="data.memory.contextWindowSize" />
+          <zeebe:input source="=10" target="data.limits.maxModelCalls" />
+          <zeebe:input source="WAIT_FOR_TOOL_CALL_RESULTS" target="data.events.behavior" />
+          <zeebe:input source="text" target="data.response.format.type" />
+          <zeebe:input source="=false" target="data.response.format.parseJson" />
+          <zeebe:input source="=true" target="data.response.includeAssistantMessage" />
+          <zeebe:input source="=true" target="data.response.includeAgentContext" />
+          <zeebe:output source="=agent" target="agent" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="elementTemplateVersion" value="5" />
+          <zeebe:header key="elementTemplateId" value="io.camunda.connectors.agenticai.aiagent.jobworker.v1" />
+          <zeebe:header key="retryBackoff" value="PT0S" />
+        </zeebe:taskHeaders>
+        <zeebe:adHoc outputCollection="toolCallResults" outputElement="={&#10;  id: toolCall._meta.id,&#10;  name: toolCall._meta.name,&#10;  content: toolCallResult&#10;}" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0kuwke0</bpmn:incoming>
+      <bpmn:outgoing>Flow_0csjtn4</bpmn:outgoing>
+      <bpmn:serviceTask id="Activity_0r13qoz" name="Get Customer Data" zeebe:modelerTemplate="com.example.camunda.match-customer-with-dri" zeebe:modelerTemplateVersion="5" zeebe:modelerTemplateIcon="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 24 24&#39; fill=&#39;none&#39; stroke=&#39;%23007bff&#39; stroke-width=&#39;2&#39; stroke-linecap=&#39;round&#39; stroke-linejoin=&#39;round&#39;%3E%3Cpath d=&#39;M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2&#39;%3E%3C/path%3E%3Ccircle cx=&#39;9&#39; cy=&#39;7&#39; r=&#39;4&#39;%3E%3C/circle%3E%3Cpath d=&#39;M22 21v-2a4 4 0 0 0-3-3.87&#39;%3E%3C/path%3E%3Cpath d=&#39;M16 3.13a4 4 0 0 1 0 7.75&#39;%3E%3C/path%3E%3C/svg%3E">
+        <bpmn:documentation>use this tool to search for the customers who match the search criteria</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="match-customer-with-dri" />
+          <zeebe:ioMapping>
+            <zeebe:input source="ID_OR_NAME" target="lookupMode" />
+            <zeebe:input source="=fromAi(toolCall.customerId, &#34;This is the Id of the customer you&#39;re looking for. If you&#39;re not useing this criteria leave it null&#34;)" target="customerId" />
+            <zeebe:input source="=fromAi(toolCall.customerName, &#34;This is the Name of the customer you&#39;re looking for. If you&#39;re not useing this criteria leave it null&#34;)" target="customerName" />
+            <zeebe:input source="true" target="allowMultiple" />
+            <zeebe:input source="true" target="fuzzyMatching" />
+            <zeebe:output source="=matchingResult" target="toolCallResult" />
+            <zeebe:output source="=customerId" target="customerId" />
+            <zeebe:output source="=customerName" target="customerName" />
+            <zeebe:output source="=customerAddress" target="customerAddress" />
+            <zeebe:output source="=customerTrustLevel" target="customerTrustLevel" />
+            <zeebe:output source="=employeeId" target="employeeId" />
+            <zeebe:output source="=employeeName" target="employeeName" />
+            <zeebe:output source="=matchStatus" target="matchStatus" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="Activity_06np787" name="Query for Insurance Policy" zeebe:modelerTemplate="com.example.camunda.manage-insurance-policy" zeebe:modelerTemplateVersion="4" zeebe:modelerTemplateIcon="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=&#39;18&#39; height=&#39;18&#39; viewBox=&#39;0 0 24 24&#39; fill=&#39;none&#39; stroke=&#39;%230d6efd&#39; stroke-width=&#39;2&#39; stroke-linecap=&#39;round&#39; stroke-linejoin=&#39;round&#39;%3E%3Cpath d=&#39;M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z&#39;%3E%3C/path%3E%3C/svg%3E">
+        <bpmn:documentation>You can use this tool to find details insurance policies held by customers or companies</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="manage-insurance-policy" />
+          <zeebe:ioMapping>
+            <zeebe:input source="QUERY" target="operation" />
+            <zeebe:input source="=fromAi(toolCall.policyId, &#34;This is the Id of the policy you&#39;re looking for, leave empty if you don&#39;t want to use this search criteria&#34;)" target="policyId" />
+            <zeebe:input source="=fromAi(toolCall.customerId, &#34;This is the Id of the customer you&#39;re looking for a policy related to, leave empty if you don&#39;t want to use this search criteria&#34;)" target="customerId" />
+            <zeebe:input source="=fromAi(toolCall.companyId, &#34;This is the Id of the company you&#39;re looking for a policy related to, leave empty if you don&#39;t want to use this search criteria&#34;)" target="companyId" />
+            <zeebe:input source="=fromAi(toolCall.policyType, &#34;This is the specific policy type you&#39;re interested in. , leave empty if you don&#39;t want to use this search criteria&#34;)" target="policyType" />
+            <zeebe:input target="status" />
+            <zeebe:input target="holderType" />
+            <zeebe:output source="=policyCrudResult" target="toolCallResult" />
+            <zeebe:output source="=operationStatus" target="policyOperationStatus" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+      </bpmn:serviceTask>
+      <bpmn:userTask id="Activity_0eftcb7" name="Show Final Report">
+        <bpmn:documentation>Use this tool to show the final report of the claim to the clerk for approval</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:userTask />
+          <zeebe:formDefinition formId="show-final-report-17hd2vs" />
+          <zeebe:ioMapping>
+            <zeebe:input source="=fromAi(toolCall.claimReport, &#34;This is the report you have to present. It should contain everything you&#39;ve learned about the claim and the client and your assement. formated in markdown&#34;)" target="claimReport" />
+            <zeebe:output source="=clerkFollowup" target="clerkFollowup" />
+            <zeebe:output source="=action" target="action" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:outgoing>Flow_1dfmms5</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:callActivity id="Activity_1xsrqb5" name="Request Information or Document">
+        <bpmn:documentation>Use this tool in order to request further information from the applicant. Either in the form of a document, clarification on data or questions needed for further validation.</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:ioMapping>
+            <zeebe:input source="=claim.emailAddress" target="customerEmail" />
+            <zeebe:input source="=fromAi(toolCall.emailRequestBody, &#34;This is the body of the email that will be sent to request information or a document. Must be formatted in plain text&#34;, &#34;string&#34;)" target="emailBody" />
+            <zeebe:output source="={&#10;  &#34;responseDetails&#34; : responseDetails,&#10;  &#34;SystemInformation&#34; : systemNote&#10;}" target="toolCallResult" />
+          </zeebe:ioMapping>
+          <zeebe:calledElement processId="RequestKYCDocumentCustomer" propagateAllChildVariables="false" />
+        </bpmn:extensionElements>
+      </bpmn:callActivity>
+      <bpmn:serviceTask id="Activity_1ojze03" name="Get Procedures and Requirements" zeebe:modelerTemplate="io.camunda.connectors.HttpJson.v2" zeebe:modelerTemplateVersion="12" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik0xNy4wMzM1IDguOTk5OTdDMTcuMDMzNSAxMy40NDc1IDEzLjQyODEgMTcuMDUyOSA4Ljk4MDY1IDE3LjA1MjlDNC41MzMxNiAxNy4wNTI5IDAuOTI3NzY1IDEzLjQ0NzUgMC45Mjc3NjUgOC45OTk5N0MwLjkyNzc2NSA0LjU1MjQ4IDQuNTMzMTYgMC45NDcwODMgOC45ODA2NSAwLjk0NzA4M0MxMy40MjgxIDAuOTQ3MDgzIDE3LjAzMzUgNC41NTI0OCAxNy4wMzM1IDguOTk5OTdaIiBmaWxsPSIjNTA1NTYyIi8+DQo8cGF0aCBkPSJNNC45MzEyNiAxNC4xNTcxTDYuNzgxMDYgMy43MTQ3MUgxMC4xMzc1QzExLjE5MTcgMy43MTQ3MSAxMS45ODI0IDMuOTgzMjMgMTIuNTA5NSA0LjUyMDI3QzEzLjA0NjUgNS4wNDczNiAxMy4zMTUgNS43MzM1OCAxMy4zMTUgNi41Nzg5MkMxMy4zMTUgNy40NDQxNCAxMy4wNzE0IDguMTU1MjIgMTIuNTg0MSA4LjcxMjE1QzEyLjEwNjcgOS4yNTkxMyAxMS40NTUzIDkuNjM3MDUgMTAuNjI5OCA5Ljg0NTlMMTIuMDYxOSAxNC4xNTcxSDEwLjMzMTVMOS4wMzM2NCAxMC4wMjQ5SDcuMjQzNTFMNi41MTI1NCAxNC4xNTcxSDQuOTMxMjZaTTcuNDk3MTEgOC41OTI4MUg5LjI0MjQ4QzkuOTk4MzIgOC41OTI4MSAxMC41OTAxIDguNDIzNzQgMTEuMDE3NyA4LjA4NTYxQzExLjQ1NTMgNy43Mzc1MyAxMS42NzQxIDcuMjY1MTMgMTEuNjc0MSA2LjY2ODQyQzExLjY3NDEgNi4xOTEwNiAxMS41MjQ5IDUuODE4MTEgMTEuMjI2NSA1LjU0OTU5QzEwLjkyODIgNS4yNzExMyAxMC40NTU4IDUuMTMxOSA5LjgwOTM2IDUuMTMxOUg4LjEwODc0TDcuNDk3MTEgOC41OTI4MVoiIGZpbGw9IndoaXRlIi8+DQo8L3N2Zz4NCg==">
+        <bpmn:documentation>Use this tool get the procedures and requiremetns for validating a claim</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="io.camunda:http-json:1" retries="3" />
+          <zeebe:ioMapping>
+            <zeebe:input source="noAuth" target="authentication.type" />
+            <zeebe:input source="GET" target="method" />
+            <zeebe:input source="https://raw.githubusercontent.com/NPDeehan/TestDataDump/refs/heads/main/insurance/policyValidationProcedures.txt" target="url" />
+            <zeebe:input source="=false" target="storeResponse" />
+            <zeebe:input source="=false" target="followRedirects" />
+            <zeebe:input source="=20" target="connectionTimeoutInSeconds" />
+            <zeebe:input source="=20" target="readTimeoutInSeconds" />
+          </zeebe:ioMapping>
+          <zeebe:taskHeaders>
+            <zeebe:header key="elementTemplateVersion" value="12" />
+            <zeebe:header key="elementTemplateId" value="io.camunda.connectors.HttpJson.v2" />
+            <zeebe:header key="resultVariable" value="toolCallResult" />
+            <zeebe:header key="retryBackoff" value="PT0S" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+      </bpmn:serviceTask>
+      <bpmn:userTask id="Activity_1mxrimm" name="Ask For Clarifications">
+        <bpmn:documentation>Use this tool in order to ask the backoffice clerk to clarify how to procced with a request or if you feel a request cannot be fulfilled</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:userTask />
+          <zeebe:ioMapping>
+            <zeebe:input source="=fromAi(toolCall.questionForClerk, &#34;this is the question you have for the clerk in markdown&#34;)" target="questionForClerk" />
+            <zeebe:output source="=answerFromClerk" target="answerFromClerk" />
+            <zeebe:output source="=cancelApplicatoin" target="cancelApplicatoin" />
+          </zeebe:ioMapping>
+          <zeebe:formDefinition formId="ask-for-clarifications-00bcxkn" />
+        </bpmn:extensionElements>
+        <bpmn:outgoing>Flow_1xo69tr</bpmn:outgoing>
+      </bpmn:userTask>
+      <bpmn:exclusiveGateway id="Gateway_0nj4tha" default="Flow_1u0wj2q">
+        <bpmn:incoming>Flow_1xo69tr</bpmn:incoming>
+        <bpmn:outgoing>Flow_10bgqs5</bpmn:outgoing>
+        <bpmn:outgoing>Flow_1u0wj2q</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_1xo69tr" sourceRef="Activity_1mxrimm" targetRef="Gateway_0nj4tha" />
+      <bpmn:sequenceFlow id="Flow_10bgqs5" sourceRef="Gateway_0nj4tha" targetRef="Event_0wcbm1p">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=cancelApplication</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:intermediateThrowEvent id="Event_1fvevu6">
+        <bpmn:extensionElements>
+          <zeebe:ioMapping>
+            <zeebe:output source="={&#34;answerFromClerk&#34; : answerFromClerk}" target="toolCallResult" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1u0wj2q</bpmn:incoming>
+      </bpmn:intermediateThrowEvent>
+      <bpmn:sequenceFlow id="Flow_1u0wj2q" sourceRef="Gateway_0nj4tha" targetRef="Event_1fvevu6" />
+      <bpmn:intermediateThrowEvent id="Event_0wcbm1p" name="Reject Claim">
+        <bpmn:incoming>Flow_10bgqs5</bpmn:incoming>
+        <bpmn:escalationEventDefinition id="EscalationEventDefinition_1iq0wbn" escalationRef="Escalation_2dlljcf" />
+      </bpmn:intermediateThrowEvent>
+      <bpmn:exclusiveGateway id="Gateway_06v6mru" default="Flow_1j13utr">
+        <bpmn:incoming>Flow_1dfmms5</bpmn:incoming>
+        <bpmn:outgoing>Flow_1j13utr</bpmn:outgoing>
+        <bpmn:outgoing>Flow_1hg7dhk</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_1dfmms5" sourceRef="Activity_0eftcb7" targetRef="Gateway_06v6mru" />
+      <bpmn:intermediateThrowEvent id="Event_0r6bntx" name="Continue Process">
+        <bpmn:extensionElements>
+          <zeebe:ioMapping>
+            <zeebe:output source="={&#10;  &#34;actionDecided&#34; : action,&#10;  &#34;commentFromClerk&#34; : clerkFollowup&#10;}" target="toolCallResult" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1j13utr</bpmn:incoming>
+      </bpmn:intermediateThrowEvent>
+      <bpmn:sequenceFlow id="Flow_1j13utr" sourceRef="Gateway_06v6mru" targetRef="Event_0r6bntx" />
+      <bpmn:sequenceFlow id="Flow_1hg7dhk" sourceRef="Gateway_06v6mru" targetRef="Event_050gx7k">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=action = "rejectClaim"</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:intermediateThrowEvent id="Event_050gx7k" name="Reject Claim">
+        <bpmn:incoming>Flow_1hg7dhk</bpmn:incoming>
+        <bpmn:escalationEventDefinition id="EscalationEventDefinition_00llts1" escalationRef="Escalation_2dlljcf" />
+      </bpmn:intermediateThrowEvent>
+    </bpmn:adHocSubProcess>
+    <bpmn:endEvent id="Event_19rhtir" name="Claim Report Created">
+      <bpmn:incoming>Flow_1i1wub1</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0csjtn4" sourceRef="Activity_1pwpm2k" targetRef="Gateway_11fybwb" />
+    <bpmn:boundaryEvent id="Event_133weo5" name="Rejected" attachedToRef="Activity_1pwpm2k">
+      <bpmn:outgoing>Flow_1akl320</bpmn:outgoing>
+      <bpmn:escalationEventDefinition id="EscalationEventDefinition_19cit02" />
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="Event_1hrtiz4">
+      <bpmn:incoming>Flow_1akl320</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1akl320" sourceRef="Event_133weo5" targetRef="Event_1hrtiz4" />
+    <bpmn:sequenceFlow id="Flow_16460of" name="Run Payment" sourceRef="Gateway_11fybwb" targetRef="Activity_074sl66">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:manualTask id="Activity_074sl66" name="Run Payout Process">
+      <bpmn:incoming>Flow_16460of</bpmn:incoming>
+      <bpmn:outgoing>Flow_006yia8</bpmn:outgoing>
+    </bpmn:manualTask>
+    <bpmn:endEvent id="Event_11vret3">
+      <bpmn:incoming>Flow_006yia8</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_006yia8" sourceRef="Activity_074sl66" targetRef="Event_11vret3" />
+    <bpmn:sequenceFlow id="Flow_1i1wub1" sourceRef="Activity_0utfjoh" targetRef="Event_19rhtir" />
+    <bpmn:adHocSubProcess id="Activity_0utfjoh" name="Claim Update Agent" zeebe:modelerTemplate="Template_02ypy9o" zeebe:modelerTemplateVersion="1" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiNBNTZFRkYiLz4KPG1hc2sgaWQ9InBhdGgtMi1vdXRzaWRlLTFfMTg1XzYiIG1hc2tVbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjQiIHk9IjQiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0iYmxhY2siPgo8cmVjdCBmaWxsPSJ3aGl0ZSIgeD0iNCIgeT0iNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ii8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjAuMDEwNSAxMi4wOTg3QzE4LjQ5IDEwLjU4OTQgMTcuMTU5NCA4LjEwODE0IDE2LjE3OTkgNi4wMTEwM0MxNi4xNTIgNi4wMDQ1MSAxNi4xMTc2IDYgMTYuMDc5NCA2QzE2LjA0MTEgNiAxNi4wMDY2IDYuMDA0NTEgMTUuOTc4OCA2LjAxMTA0QzE0Ljk5OTQgOC4xMDgxNCAxMy42Njk3IDEwLjU4ODkgMTIuMTQ4MSAxMi4wOTgxQzEwLjYyNjkgMTMuNjA3MSA4LjEyNTY4IDE0LjkyNjQgNi4wMTE1NyAxNS44OTgxQzYuMDA0NzQgMTUuOTI2MSA2IDE1Ljk2MTEgNiAxNkM2IDE2LjAzODcgNi4wMDQ2OCAxNi4wNzM2IDYuMDExNDQgMTYuMTAxNEM4LjEyNTE5IDE3LjA3MjkgMTAuNjI2MiAxOC4zOTE5IDEyLjE0NzcgMTkuOTAxNkMxMy42Njk3IDIxLjQxMDcgMTQuOTk5NiAyMy44OTIgMTUuOTc5MSAyNS45ODlDMTYuMDA2OCAyNS45OTU2IDE2LjA0MTEgMjYgMTYuMDc5MyAyNkMxNi4xMTc1IDI2IDE2LjE1MTkgMjUuOTk1NCAxNi4xNzk2IDI1Ljk4OUMxNy4xNTkxIDIzLjg5MiAxOC40ODg4IDIxLjQxMSAyMC4wMDk5IDE5LjkwMjFNMjAuMDA5OSAxOS45MDIxQzIxLjUyNTMgMTguMzk4NyAyMy45NDY1IDE3LjA2NjkgMjUuOTkxNSAxNi4wODI0QzI1Ljk5NjUgMTYuMDU5MyAyNiAxNi4wMzEgMjYgMTUuOTk5N0MyNiAxNS45Njg0IDI1Ljk5NjUgMTUuOTQwMyAyNS45OTE1IDE1LjkxNzFDMjMuOTQ3NCAxNC45MzI3IDIxLjUyNTkgMTMuNjAxIDIwLjAxMDUgMTIuMDk4NyIvPgo8L21hc2s+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjAuMDEwNSAxMi4wOTg3QzE4LjQ5IDEwLjU4OTQgMTcuMTU5NCA4LjEwODE0IDE2LjE3OTkgNi4wMTEwM0MxNi4xNTIgNi4wMDQ1MSAxNi4xMTc2IDYgMTYuMDc5NCA2QzE2LjA0MTEgNiAxNi4wMDY2IDYuMDA0NTEgMTUuOTc4OCA2LjAxMTA0QzE0Ljk5OTQgOC4xMDgxNCAxMy42Njk3IDEwLjU4ODkgMTIuMTQ4MSAxMi4wOTgxQzEwLjYyNjkgMTMuNjA3MSA4LjEyNTY4IDE0LjkyNjQgNi4wMTE1NyAxNS44OTgxQzYuMDA0NzQgMTUuOTI2MSA2IDE1Ljk2MTEgNiAxNkM2IDE2LjAzODcgNi4wMDQ2OCAxNi4wNzM2IDYuMDExNDQgMTYuMTAxNEM4LjEyNTE5IDE3LjA3MjkgMTAuNjI2MiAxOC4zOTE5IDEyLjE0NzcgMTkuOTAxNkMxMy42Njk3IDIxLjQxMDcgMTQuOTk5NiAyMy44OTIgMTUuOTc5MSAyNS45ODlDMTYuMDA2OCAyNS45OTU2IDE2LjA0MTEgMjYgMTYuMDc5MyAyNkMxNi4xMTc1IDI2IDE2LjE1MTkgMjUuOTk1NCAxNi4xNzk2IDI1Ljk4OUMxNy4xNTkxIDIzLjg5MiAxOC40ODg4IDIxLjQxMSAyMC4wMDk5IDE5LjkwMjFNMjAuMDA5OSAxOS45MDIxQzIxLjUyNTMgMTguMzk4NyAyMy45NDY1IDE3LjA2NjkgMjUuOTkxNSAxNi4wODI0QzI1Ljk5NjUgMTYuMDU5MyAyNiAxNi4wMzEgMjYgMTUuOTk5N0MyNiAxNS45Njg0IDI1Ljk5NjUgMTUuOTQwMyAyNS45OTE1IDE1LjkxNzFDMjMuOTQ3NCAxNC45MzI3IDIxLjUyNTkgMTMuNjAxIDIwLjAxMDUgMTIuMDk4NyIgZmlsbD0id2hpdGUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMC4wMTA1IDEyLjA5ODdDMTguNDkgMTAuNTg5NCAxNy4xNTk0IDguMTA4MTQgMTYuMTc5OSA2LjAxMTAzQzE2LjE1MiA2LjAwNDUxIDE2LjExNzYgNiAxNi4wNzk0IDZDMTYuMDQxMSA2IDE2LjAwNjYgNi4wMDQ1MSAxNS45Nzg4IDYuMDExMDRDMTQuOTk5NCA4LjEwODE0IDEzLjY2OTcgMTAuNTg4OSAxMi4xNDgxIDEyLjA5ODFDMTAuNjI2OSAxMy42MDcxIDguMTI1NjggMTQuOTI2NCA2LjAxMTU3IDE1Ljg5ODFDNi4wMDQ3NCAxNS45MjYxIDYgMTUuOTYxMSA2IDE2QzYgMTYuMDM4NyA2LjAwNDY4IDE2LjA3MzYgNi4wMTE0NCAxNi4xMDE0QzguMTI1MTkgMTcuMDcyOSAxMC42MjYyIDE4LjM5MTkgMTIuMTQ3NyAxOS45MDE2QzEzLjY2OTcgMjEuNDEwNyAxNC45OTk2IDIzLjg5MiAxNS45NzkxIDI1Ljk4OUMxNi4wMDY4IDI1Ljk5NTYgMTYuMDQxMSAyNiAxNi4wNzkzIDI2QzE2LjExNzUgMjYgMTYuMTUxOSAyNS45OTU0IDE2LjE3OTYgMjUuOTg5QzE3LjE1OTEgMjMuODkyIDE4LjQ4ODggMjEuNDExIDIwLjAwOTkgMTkuOTAyMU0yMC4wMDk5IDE5LjkwMjFDMjEuNTI1MyAxOC4zOTg3IDIzLjk0NjUgMTcuMDY2OSAyNS45OTE1IDE2LjA4MjRDMjUuOTk2NSAxNi4wNTkzIDI2IDE2LjAzMSAyNiAxNS45OTk3QzI2IDE1Ljk2ODQgMjUuOTk2NSAxNS45NDAzIDI1Ljk5MTUgMTUuOTE3MUMyMy45NDc0IDE0LjkzMjcgMjEuNTI1OSAxMy42MDEgMjAuMDEwNSAxMi4wOTg3IiBzdHJva2U9IiM0OTFEOEIiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFzaz0idXJsKCNwYXRoLTItb3V0c2lkZS0xXzE4NV82KSIvPgo8L3N2Zz4K">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda.agenticai:aiagent-job-worker:1" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="bedrock" target="provider.type" />
+          <zeebe:input source="{{secrets.AWS_REGION}}" target="provider.bedrock.region" />
+          <zeebe:input source="credentials" target="provider.bedrock.authentication.type" />
+          <zeebe:input source="{{secrets.AWS_ACCESS_KEY }}" target="provider.bedrock.authentication.accessKey" />
+          <zeebe:input source="{{secrets.AWS_SECRET_KEY}}" target="provider.bedrock.authentication.secretKey" />
+          <zeebe:input source="us.anthropic.claude-haiku-4-5-20251001-v1:0" target="provider.bedrock.model.model" />
+          <zeebe:input source="=&#34;You are an insurnace agent. you work for Allient Henna Insurance and your goal is to check up on a client who is currently being paid by us due to long term injury perventing them for working. &#10;&#10;You need to peridodically reach out to the client and find out how they are getting on by finding out answers to the following questions. If you need to ask these questions a second time you should phrase them in a way that incorporates their previous answer and ask them to confirm it.&#10;&#10;&#10;What is your current level of daily functioning?&#10;&#39;Can you describe what a typical day looks like for you? Are you able to perform basic activities such as dressing, cooking, or driving without assistance?&#39;&#10;This assesses whether the injury still limits basic independence — a core measure of ongoing disability.&#10;Are you currently receiving medical treatment, and what does your treating physician say about your prognosis?&#10;&#39;Are you still under the care of a doctor, specialist, or physiotherapist? Has your medical team given you a timeline or expectation for recovery or improvement?&#39;&#10;This establishes whether the condition is actively being treated and whether medical evidence supports continued incapacity.&#10;Have you attempted or been assessed for a return to work?&#10;&#39;Have you tried to return to any form of work — including part-time, light duties, or a different role? If so, what happened? If not, has a vocational assessor or your doctor advised against it?&#39;&#10;This directly tests the work-capability element that most long-term income protection policies hinge on.&#10;Has your condition changed — improved, worsened, or stabilised — since your last review?&#10;&#39;Compared to six months ago, would you say your symptoms are better, worse, or about the same? Have you had any new diagnoses, procedures, or setbacks?&#39;&#10;Change in condition is the key trigger for adjusting benefit duration — insurers need a trend, not just a snapshot.&#10;What rehabilitation, retraining, or support programmes have you engaged with?&#10;&#39;Have you participated in any physiotherapy, occupational therapy, mental health support, or retraining programmes? Is there anything that has been recommended to you that you haven&#39;t yet been able to access?&#39;&#10;Many policies include a duty to mitigate — meaning the claimant is expected to take reasonable steps toward recovery or reemployment. This question checks compliance and also surfaces barriers the insurer may be able to help remove.&#10;&#10;You also need to ask the client how long you should wait before sending a follow up so that you know how long to wait. If you&#39;re unsure ask the clerk how long to wait.&#10;&#10;After getting an answer to the questions you need to sent a report to the clerk detailing status of the client and the claim.&#10;&#10;Occationally new information will be sent in regarding this case. As it comes in you should use the tools provided to validate this new information my asking the client. &#10;e.g you might be informed that we heard the client has started working again. in that case you should ask them about it and then report to the clerk&#10;&#10;Tools are provided, you should prefer them instead of guessing an answer. You can call the same tool multiple times by providing different input values. Don&#39;t guess any tools which were not explicitly configured. If no tool matches the request, try to generate an answer. If you&#39;re not able to find a good answer, return with a message stating why you&#39;re not able to.&#10;&#10;Wrap minimal, inspectable reasoning in *exactly* this XML template:&#10;&#10;&#60;thinking&#62;&#10;&#60;context&#62;…briefly state the customer’s need and current state…&#60;/context&#62;&#10;&#60;reflection&#62;…list candidate tools, justify which you will call next and why…&#60;/reflection&#62;&#10;&#60;/thinking&#62;&#10;&#10;Reveal **no** additional private reasoning outside these tags.&#34;" target="data.systemPrompt.prompt" />
+          <zeebe:input source="=&#34;Here are the details so far: &#34; + summaryAgent.responseText" target="data.userPrompt.prompt" />
+          <zeebe:input target="agentContext" />
+          <zeebe:input source="in-process" target="data.memory.storage.type" />
+          <zeebe:input source="=20" target="data.memory.contextWindowSize" />
+          <zeebe:input source="=10" target="data.limits.maxModelCalls" />
+          <zeebe:input source="WAIT_FOR_TOOL_CALL_RESULTS" target="data.events.behavior" />
+          <zeebe:input source="text" target="data.response.format.type" />
+          <zeebe:input source="=false" target="data.response.format.parseJson" />
+          <zeebe:input source="=false" target="data.response.includeAssistantMessage" />
+          <zeebe:input source="=false" target="data.response.includeAgentContext" />
+          <zeebe:output source="=agent" target="updateAgent" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="elementTemplateVersion" value="5" />
+          <zeebe:header key="elementTemplateId" value="io.camunda.connectors.agenticai.aiagent.jobworker.v1" />
+          <zeebe:header key="retryBackoff" value="PT0S" />
+        </zeebe:taskHeaders>
+        <zeebe:adHoc outputCollection="toolCallResults" outputElement="={&#10;  id: toolCall._meta.id,&#10;  name: toolCall._meta.name,&#10;  content: toolCallResult&#10;}" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0y2lsci</bpmn:incoming>
+      <bpmn:outgoing>Flow_1i1wub1</bpmn:outgoing>
+      <bpmn:intermediateCatchEvent id="Event_0m8dzxr" name="Wait for Next Communication">
+        <bpmn:extensionElements>
+          <zeebe:ioMapping>
+            <zeebe:output source="={&#10;  &#34;Outcome&#34; : &#34;waited: &#34;+durationToWait&#10;}" target="toolCallResult" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0qfo9kt</bpmn:incoming>
+        <bpmn:timerEventDefinition id="TimerEventDefinition_1jw3o1j">
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">=durationToWait</bpmn:timeDuration>
+        </bpmn:timerEventDefinition>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:scriptTask id="Activity_0dcm91w" name="Calculate Wait time">
+        <bpmn:documentation>Use this tool in order to wait for a specific time frame.</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:script expression="=true" resultVariable="triggerTimer" />
+          <zeebe:ioMapping>
+            <zeebe:input source="=fromAi(toolCall.duration, &#34;This is the length of time you&#39;d like to wait. formated in ISO8601 (e.g. PT1H = 1 hour&#34;)" target="durationToWait" />
+            <zeebe:output source="=durationToWait" target="durationToWait" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:outgoing>Flow_0dv1xfi</bpmn:outgoing>
+      </bpmn:scriptTask>
+      <bpmn:sequenceFlow id="Flow_0dv1xfi" sourceRef="Activity_0dcm91w" targetRef="Gateway_1g2q0zh" />
+      <bpmn:callActivity id="Activity_1piih8o" name="Request Information or Document">
+        <bpmn:documentation>Use this tool in order to request further information from the client. Either in the form of a document, clarification on data or questions needed for further validation. Never use this tool if you intend to speak to an internal employee like a clerk</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:ioMapping>
+            <zeebe:input source="=claim.emailAddress" target="customerEmail" />
+            <zeebe:input source="=fromAi(toolCall.emailRequestBody, &#34;This is the body of the email that will be sent to request information or a document. Must be formatted in plain text&#34;, &#34;string&#34;)" target="emailBody" />
+            <zeebe:output source="={&#10;  &#34;responseDetails&#34; : responseDetails,&#10;  &#34;SystemInformation&#34; : systemNote&#10;}" target="toolCallResult" />
+          </zeebe:ioMapping>
+          <zeebe:calledElement processId="RequestKYCDocumentCustomer" propagateAllChildVariables="false" />
+        </bpmn:extensionElements>
+      </bpmn:callActivity>
+      <bpmn:userTask id="Activity_097ngwp" name="Show Update Report">
+        <bpmn:documentation>Use this tool to show the update report of the claim to the clerk for approval. The Clerk may respond with this tool with followup requests, you can use this tool to answer those followup questions.</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:userTask />
+          <zeebe:formDefinition formId="show-final-report-17hd2vs" />
+          <zeebe:ioMapping>
+            <zeebe:input source="=fromAi(toolCall.claimReport, &#34;This is the report on how the client is doing and how likely it is that they may come off the insurance. formated in markdown&#34;)" target="claimReport" />
+            <zeebe:input source="=fromAi(toolCall.followupQueryResponse, &#34;If the clerk has asked a question or clarification us this variable to convay the answer. If no question has been asked leave this empty. format in markdown&#34;)" target="followupQueryResponse" />
+            <zeebe:output source="=clerkFollowup" target="clerkFollowup" />
+            <zeebe:output source="=action" target="action" />
+            <zeebe:output source="={&#10;  &#34;clerkFollowup&#34; : clerkFollowup, &#10;  &#34;action&#34; : action&#10;}" target="toolCallResult" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+      </bpmn:userTask>
+      <bpmn:userTask id="Activity_1qkxnlz" name="Ask For Clarifications">
+        <bpmn:documentation>Use this tool in order to ask the backoffice clerk to clarify how to procced with a request or if you feel a request cannot be fulfilled</bpmn:documentation>
+        <bpmn:extensionElements>
+          <zeebe:userTask />
+          <zeebe:ioMapping>
+            <zeebe:input source="=fromAi(toolCall.questionForClerk, &#34;this is the question you have for the clerk in markdown&#34;)" target="questionForClerk" />
+            <zeebe:output source="=answerFromClerk" target="toolCallResult" />
+          </zeebe:ioMapping>
+          <zeebe:formDefinition formId="ask-for-clarifications-00bcxkn" />
+        </bpmn:extensionElements>
+      </bpmn:userTask>
+      <bpmn:subProcess id="Activity_0bdano5" triggeredByEvent="true">
+        <bpmn:startEvent id="Event_1njx6dg" name="Information Update" isInterrupting="false">
+          <bpmn:extensionElements />
+          <bpmn:outgoing>Flow_0njq9d7</bpmn:outgoing>
+          <bpmn:messageEventDefinition id="MessageEventDefinition_1udn1ko" messageRef="Message_05qa53l" />
+        </bpmn:startEvent>
+        <bpmn:intermediateThrowEvent id="Event_11lexz4" name="Update Given">
+          <bpmn:extensionElements>
+            <zeebe:ioMapping>
+              <zeebe:output source="={&#10;  &#34;UpdateOnTheClaim&#34; : UpdateOnTheClaim&#10;}" target="toolCallResult" />
+            </zeebe:ioMapping>
+          </bpmn:extensionElements>
+          <bpmn:incoming>Flow_0njq9d7</bpmn:incoming>
+        </bpmn:intermediateThrowEvent>
+        <bpmn:sequenceFlow id="Flow_0njq9d7" sourceRef="Event_1njx6dg" targetRef="Event_11lexz4" />
+      </bpmn:subProcess>
+      <bpmn:sequenceFlow id="Flow_0qfo9kt" sourceRef="Gateway_1g2q0zh" targetRef="Event_0m8dzxr" />
+      <bpmn:eventBasedGateway id="Gateway_1g2q0zh">
+        <bpmn:incoming>Flow_0dv1xfi</bpmn:incoming>
+        <bpmn:outgoing>Flow_0qfo9kt</bpmn:outgoing>
+        <bpmn:outgoing>Flow_0y1tq3b</bpmn:outgoing>
+      </bpmn:eventBasedGateway>
+      <bpmn:intermediateCatchEvent id="Event_1v7iep8" name="Case Update">
+        <bpmn:extensionElements>
+          <zeebe:ioMapping>
+            <zeebe:output source="={&#10;  &#34;UpdateOnTheClaim&#34; : UpdateOnTheClaim&#10;}" target="toolCallResult" />
+          </zeebe:ioMapping>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0y1tq3b</bpmn:incoming>
+        <bpmn:messageEventDefinition id="MessageEventDefinition_18d8q6a" messageRef="Message_1aes4cr" />
+      </bpmn:intermediateCatchEvent>
+      <bpmn:sequenceFlow id="Flow_0y1tq3b" sourceRef="Gateway_1g2q0zh" targetRef="Event_1v7iep8" />
+    </bpmn:adHocSubProcess>
+    <bpmn:serviceTask id="Activity_0gwufmv" name="Summarize Claim Details" zeebe:modelerTemplate="io.camunda.connectors.agenticai.aiagent.v1" zeebe:modelerTemplateVersion="5" zeebe:modelerTemplateIcon="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTYiIGZpbGw9IiNBNTZFRkYiLz4KPG1hc2sgaWQ9InBhdGgtMi1vdXRzaWRlLTFfMTg1XzYiIG1hc2tVbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjQiIHk9IjQiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0iYmxhY2siPgo8cmVjdCBmaWxsPSJ3aGl0ZSIgeD0iNCIgeT0iNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0Ii8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjAuMDEwNSAxMi4wOTg3QzE4LjQ5IDEwLjU4OTQgMTcuMTU5NCA4LjEwODE0IDE2LjE3OTkgNi4wMTEwM0MxNi4xNTIgNi4wMDQ1MSAxNi4xMTc2IDYgMTYuMDc5NCA2QzE2LjA0MTEgNiAxNi4wMDY2IDYuMDA0NTEgMTUuOTc4OCA2LjAxMTA0QzE0Ljk5OTQgOC4xMDgxNCAxMy42Njk3IDEwLjU4ODkgMTIuMTQ4MSAxMi4wOTgxQzEwLjYyNjkgMTMuNjA3MSA4LjEyNTY4IDE0LjkyNjQgNi4wMTE1NyAxNS44OTgxQzYuMDA0NzQgMTUuOTI2MSA2IDE1Ljk2MTEgNiAxNkM2IDE2LjAzODcgNi4wMDQ2OCAxNi4wNzM2IDYuMDExNDQgMTYuMTAxNEM4LjEyNTE5IDE3LjA3MjkgMTAuNjI2MiAxOC4zOTE5IDEyLjE0NzcgMTkuOTAxNkMxMy42Njk3IDIxLjQxMDcgMTQuOTk5NiAyMy44OTIgMTUuOTc5MSAyNS45ODlDMTYuMDA2OCAyNS45OTU2IDE2LjA0MTEgMjYgMTYuMDc5MyAyNkMxNi4xMTc1IDI2IDE2LjE1MTkgMjUuOTk1NCAxNi4xNzk2IDI1Ljk4OUMxNy4xNTkxIDIzLjg5MiAxOC40ODg4IDIxLjQxMSAyMC4wMDk5IDE5LjkwMjFNMjAuMDA5OSAxOS45MDIxQzIxLjUyNTMgMTguMzk4NyAyMy45NDY1IDE3LjA2NjkgMjUuOTkxNSAxNi4wODI0QzI1Ljk5NjUgMTYuMDU5MyAyNiAxNi4wMzEgMjYgMTUuOTk5N0MyNiAxNS45Njg0IDI1Ljk5NjUgMTUuOTQwMyAyNS45OTE1IDE1LjkxNzFDMjMuOTQ3NCAxNC45MzI3IDIxLjUyNTkgMTMuNjAxIDIwLjAxMDUgMTIuMDk4NyIvPgo8L21hc2s+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMjAuMDEwNSAxMi4wOTg3QzE4LjQ5IDEwLjU4OTQgMTcuMTU5NCA4LjEwODE0IDE2LjE3OTkgNi4wMTEwM0MxNi4xNTIgNi4wMDQ1MSAxNi4xMTc2IDYgMTYuMDc5NCA2QzE2LjA0MTEgNiAxNi4wMDY2IDYuMDA0NTEgMTUuOTc4OCA2LjAxMTA0QzE0Ljk5OTQgOC4xMDgxNCAxMy42Njk3IDEwLjU4ODkgMTIuMTQ4MSAxMi4wOTgxQzEwLjYyNjkgMTMuNjA3MSA4LjEyNTY4IDE0LjkyNjQgNi4wMTE1NyAxNS44OTgxQzYuMDA0NzQgMTUuOTI2MSA2IDE1Ljk2MTEgNiAxNkM2IDE2LjAzODcgNi4wMDQ2OCAxNi4wNzM2IDYuMDExNDQgMTYuMTAxNEM4LjEyNTE5IDE3LjA3MjkgMTAuNjI2MiAxOC4zOTE5IDEyLjE0NzcgMTkuOTAxNkMxMy42Njk3IDIxLjQxMDcgMTQuOTk5NiAyMy44OTIgMTUuOTc5MSAyNS45ODlDMTYuMDA2OCAyNS45OTU2IDE2LjA0MTEgMjYgMTYuMDc5MyAyNkMxNi4xMTc1IDI2IDE2LjE1MTkgMjUuOTk1NCAxNi4xNzk2IDI1Ljk4OUMxNy4xNTkxIDIzLjg5MiAxOC40ODg4IDIxLjQxMSAyMC4wMDk5IDE5LjkwMjFNMjAuMDA5OSAxOS45MDIxQzIxLjUyNTMgMTguMzk4NyAyMy45NDY1IDE3LjA2NjkgMjUuOTkxNSAxNi4wODI0QzI1Ljk5NjUgMTYuMDU5MyAyNiAxNi4wMzEgMjYgMTUuOTk5N0MyNiAxNS45Njg0IDI1Ljk5NjUgMTUuOTQwMyAyNS45OTE1IDE1LjkxNzFDMjMuOTQ3NCAxNC45MzI3IDIxLjUyNTkgMTMuNjAxIDIwLjAxMDUgMTIuMDk4NyIgZmlsbD0id2hpdGUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMC4wMTA1IDEyLjA5ODdDMTguNDkgMTAuNTg5NCAxNy4xNTk0IDguMTA4MTQgMTYuMTc5OSA2LjAxMTAzQzE2LjE1MiA2LjAwNDUxIDE2LjExNzYgNiAxNi4wNzk0IDZDMTYuMDQxMSA2IDE2LjAwNjYgNi4wMDQ1MSAxNS45Nzg4IDYuMDExMDRDMTQuOTk5NCA4LjEwODE0IDEzLjY2OTcgMTAuNTg4OSAxMi4xNDgxIDEyLjA5ODFDMTAuNjI2OSAxMy42MDcxIDguMTI1NjggMTQuOTI2NCA2LjAxMTU3IDE1Ljg5ODFDNi4wMDQ3NCAxNS45MjYxIDYgMTUuOTYxMSA2IDE2QzYgMTYuMDM4NyA2LjAwNDY4IDE2LjA3MzYgNi4wMTE0NCAxNi4xMDE0QzguMTI1MTkgMTcuMDcyOSAxMC42MjYyIDE4LjM5MTkgMTIuMTQ3NyAxOS45MDE2QzEzLjY2OTcgMjEuNDEwNyAxNC45OTk2IDIzLjg5MiAxNS45NzkxIDI1Ljk4OUMxNi4wMDY4IDI1Ljk5NTYgMTYuMDQxMSAyNiAxNi4wNzkzIDI2QzE2LjExNzUgMjYgMTYuMTUxOSAyNS45OTU0IDE2LjE3OTYgMjUuOTg5QzE3LjE1OTEgMjMuODkyIDE4LjQ4ODggMjEuNDExIDIwLjAwOTkgMTkuOTAyMU0yMC4wMDk5IDE5LjkwMjFDMjEuNTI1MyAxOC4zOTg3IDIzLjk0NjUgMTcuMDY2OSAyNS45OTE1IDE2LjA4MjRDMjUuOTk2NSAxNi4wNTkzIDI2IDE2LjAzMSAyNiAxNS45OTk3QzI2IDE1Ljk2ODQgMjUuOTk2NSAxNS45NDAzIDI1Ljk5MTUgMTUuOTE3MUMyMy45NDc0IDE0LjkzMjcgMjEuNTI1OSAxMy42MDEgMjAuMDEwNSAxMi4wOTg3IiBzdHJva2U9IiM0OTFEOEIiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgbWFzaz0idXJsKCNwYXRoLTItb3V0c2lkZS0xXzE4NV82KSIvPgo8L3N2Zz4K">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="io.camunda.agenticai:aiagent:1" retries="3" />
+        <zeebe:ioMapping>
+          <zeebe:input source="openai" target="provider.type" />
+          <zeebe:input source="{{secrets.OpenAI}}" target="provider.openai.authentication.apiKey" />
+          <zeebe:input source="gpt-5.1" target="provider.openai.model.model" />
+          <zeebe:input source="=&#34;You are an agent running as part of a insurance claims process. At this point in the process a claim has been approved and your job is to summarize all the details of that claim based on the all the information produced by the previous agent as it worked on the problem. &#34;" target="data.systemPrompt.prompt" />
+          <zeebe:input source="=string(agent)" target="data.userPrompt.prompt" />
+          <zeebe:input source="=summaryAgent.context" target="data.context" />
+          <zeebe:input source="in-process" target="data.memory.storage.type" />
+          <zeebe:input source="=20" target="data.memory.contextWindowSize" />
+          <zeebe:input source="=10" target="data.limits.maxModelCalls" />
+          <zeebe:input source="text" target="data.response.format.type" />
+          <zeebe:input source="=false" target="data.response.format.parseJson" />
+          <zeebe:input source="=false" target="data.response.includeAssistantMessage" />
+        </zeebe:ioMapping>
+        <zeebe:taskHeaders>
+          <zeebe:header key="elementTemplateVersion" value="5" />
+          <zeebe:header key="elementTemplateId" value="io.camunda.connectors.agenticai.aiagent.v1" />
+          <zeebe:header key="resultVariable" value="summaryAgent" />
+          <zeebe:header key="retryBackoff" value="PT0S" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1hrpzwq</bpmn:incoming>
+      <bpmn:outgoing>Flow_0y2lsci</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1hrpzwq" name="Long Term Payout" sourceRef="Gateway_11fybwb" targetRef="Activity_0gwufmv">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=claim.claimType = "workInjury"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_0y2lsci" sourceRef="Activity_0gwufmv" targetRef="Activity_0utfjoh" />
+    <bpmn:inclusiveGateway id="Gateway_11fybwb" name="Claim Type">
+      <bpmn:incoming>Flow_0csjtn4</bpmn:incoming>
+      <bpmn:outgoing>Flow_16460of</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1hrpzwq</bpmn:outgoing>
+    </bpmn:inclusiveGateway>
+    <bpmn:group id="Group_17jq4dy" categoryValueRef="CategoryValue_0xbvtr0" />
+    <bpmn:group id="Group_061j0hf" categoryValueRef="CategoryValue_0golbet" />
+  </bpmn:process>
+  <bpmn:escalation id="Escalation_2dlljcf" name="Rejected" escalationCode="Rejected" />
+  <bpmn:category id="Category_0wb7gck">
+    <bpmn:categoryValue id="CategoryValue_0xbvtr0" value="Data Gathering" />
+  </bpmn:category>
+  <bpmn:category id="Category_0qiop0j">
+    <bpmn:categoryValue id="CategoryValue_0golbet" value="Approval" />
+  </bpmn:category>
+  <bpmn:message id="Message_05qa53l" name="InformationUpdate">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=applicationId" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmn:message id="Message_1aes4cr" name="CaseUpdate">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=applicationId" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="InsuranceClaimValidationAgent">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="150" y="100" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="126" y="143" width="84" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05iydmb_di" bpmnElement="Activity_1pwpm2k" isExpanded="true">
+        <dc:Bounds x="300" y="-40" width="700" height="500" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1kn7bwv" bpmnElement="Activity_0r13qoz">
+        <dc:Bounds x="350" y="190" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0u1w1b3_di" bpmnElement="Activity_06np787">
+        <dc:Bounds x="470" y="190" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0mxs64q_di" bpmnElement="Activity_0eftcb7">
+        <dc:Bounds x="640" y="40" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0peuz24_di" bpmnElement="Activity_1xsrqb5">
+        <dc:Bounds x="400" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1cxtl68_di" bpmnElement="Activity_1ojze03">
+        <dc:Bounds x="400" y="290" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_06dvbzu_di" bpmnElement="Activity_1mxrimm">
+        <dc:Bounds x="640" y="240" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0nj4tha_di" bpmnElement="Gateway_0nj4tha" isMarkerVisible="true">
+        <dc:Bounds x="795" y="255" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1fvevu6_di" bpmnElement="Event_1fvevu6">
+        <dc:Bounds x="902" y="372" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_11sdsdd_di" bpmnElement="Event_0wcbm1p">
+        <dc:Bounds x="902" y="262" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="889" y="305" width="63" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_06v6mru_di" bpmnElement="Gateway_06v6mru" isMarkerVisible="true">
+        <dc:Bounds x="795" y="55" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0r6bntx_di" bpmnElement="Event_0r6bntx">
+        <dc:Bounds x="902" y="62" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="877" y="105" width="87" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_18qznlf_di" bpmnElement="Event_050gx7k">
+        <dc:Bounds x="902" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="889" y="215" width="63" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1xo69tr_di" bpmnElement="Flow_1xo69tr">
+        <di:waypoint x="740" y="280" />
+        <di:waypoint x="795" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10bgqs5_di" bpmnElement="Flow_10bgqs5">
+        <di:waypoint x="845" y="280" />
+        <di:waypoint x="902" y="280" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1u0wj2q_di" bpmnElement="Flow_1u0wj2q">
+        <di:waypoint x="820" y="305" />
+        <di:waypoint x="820" y="390" />
+        <di:waypoint x="902" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1dfmms5_di" bpmnElement="Flow_1dfmms5">
+        <di:waypoint x="740" y="80" />
+        <di:waypoint x="795" y="80" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1j13utr_di" bpmnElement="Flow_1j13utr">
+        <di:waypoint x="845" y="80" />
+        <di:waypoint x="902" y="80" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1hg7dhk_di" bpmnElement="Flow_1hg7dhk">
+        <di:waypoint x="820" y="105" />
+        <di:waypoint x="820" y="190" />
+        <di:waypoint x="902" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_19rhtir_di" bpmnElement="Event_19rhtir">
+        <dc:Bounds x="2102" y="100" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2086" y="143" width="68" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1hrtiz4_di" bpmnElement="Event_1hrtiz4">
+        <dc:Bounds x="852" y="522" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0gphcip_di" bpmnElement="Activity_074sl66">
+        <dc:Bounds x="1220" y="220" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_11vret3_di" bpmnElement="Event_11vret3">
+        <dc:Bounds x="1352" y="242" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0v7605c_di" bpmnElement="Activity_0utfjoh" isExpanded="true">
+        <dc:Bounds x="1420" y="-10" width="590" height="568" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1aol2by_di" bpmnElement="Event_0m8dzxr">
+        <dc:Bounds x="1682" y="82" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1662" y="125" width="77" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0q1n224_di" bpmnElement="Activity_0dcm91w">
+        <dc:Bounds x="1480" y="60" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1gwo8ps" bpmnElement="Activity_1piih8o">
+        <dc:Bounds x="1480" y="200" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0see5nf" bpmnElement="Activity_097ngwp">
+        <dc:Bounds x="1850" y="60" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0m892sg" bpmnElement="Activity_1qkxnlz">
+        <dc:Bounds x="1850" y="200" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_085d8r6_di" bpmnElement="Activity_0bdano5" isExpanded="true">
+        <dc:Bounds x="1560" y="350" width="230" height="150" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ii8jac_di" bpmnElement="Event_1njx6dg">
+        <dc:Bounds x="1600" y="392" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1589" y="435" width="59" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_11lexz4_di" bpmnElement="Event_11lexz4">
+        <dc:Bounds x="1692" y="392" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1676" y="435" width="68" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0njq9d7_di" bpmnElement="Flow_0njq9d7">
+        <di:waypoint x="1636" y="410" />
+        <di:waypoint x="1692" y="410" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Gateway_0ej9wod_di" bpmnElement="Gateway_1g2q0zh">
+        <dc:Bounds x="1605" y="75" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1v7iep8_di" bpmnElement="Event_1v7iep8">
+        <dc:Bounds x="1682" y="192" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1668" y="235" width="65" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0dv1xfi_di" bpmnElement="Flow_0dv1xfi">
+        <di:waypoint x="1580" y="100" />
+        <di:waypoint x="1605" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0qfo9kt_di" bpmnElement="Flow_0qfo9kt">
+        <di:waypoint x="1655" y="100" />
+        <di:waypoint x="1682" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0y1tq3b_di" bpmnElement="Flow_0y1tq3b">
+        <di:waypoint x="1630" y="125" />
+        <di:waypoint x="1630" y="210" />
+        <di:waypoint x="1682" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_16szo3a_di" bpmnElement="Activity_0gwufmv">
+        <dc:Bounds x="1220" y="78" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0w06a6a_di" bpmnElement="Gateway_11fybwb">
+        <dc:Bounds x="1075" y="93" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1072" y="53" width="56" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Group_17jq4dy_di" bpmnElement="Group_17jq4dy">
+        <dc:Bounds x="330" y="20" width="250" height="390" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="418" y="27" width="75" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Group_061j0hf_di" bpmnElement="Group_061j0hf">
+        <dc:Bounds x="620" y="20" width="350" height="400" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="773" y="27" width="44" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_077d691_di" bpmnElement="Event_133weo5">
+        <dc:Bounds x="762" y="442" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="708" y="473" width="44" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0kuwke0_di" bpmnElement="Flow_0kuwke0">
+        <di:waypoint x="186" y="118" />
+        <di:waypoint x="300" y="118" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0csjtn4_di" bpmnElement="Flow_0csjtn4">
+        <di:waypoint x="1000" y="118" />
+        <di:waypoint x="1075" y="118" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1akl320_di" bpmnElement="Flow_1akl320">
+        <di:waypoint x="780" y="478" />
+        <di:waypoint x="780" y="540" />
+        <di:waypoint x="852" y="540" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16460of_di" bpmnElement="Flow_16460of">
+        <di:waypoint x="1100" y="143" />
+        <di:waypoint x="1100" y="260" />
+        <di:waypoint x="1220" y="260" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1126" y="233" width="67" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_006yia8_di" bpmnElement="Flow_006yia8">
+        <di:waypoint x="1320" y="260" />
+        <di:waypoint x="1352" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1i1wub1_di" bpmnElement="Flow_1i1wub1">
+        <di:waypoint x="2010" y="118" />
+        <di:waypoint x="2102" y="118" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1hrpzwq_di" bpmnElement="Flow_1hrpzwq">
+        <di:waypoint x="1125" y="118" />
+        <di:waypoint x="1220" y="118" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1128" y="100" width="90" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0y2lsci_di" bpmnElement="Flow_0y2lsci">
+        <di:waypoint x="1320" y="118" />
+        <di:waypoint x="1420" y="118" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

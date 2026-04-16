@@ -1,0 +1,74 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "ce5fd89"
+  },
+  "schemaVersion": 19,
+  "id": "show-final-report-17hd2vs",
+  "components": [
+    {
+      "text": "# Report On Insurance Claim",
+      "type": "text",
+      "layout": {
+        "row": "Row_1t64svo",
+        "columns": null
+      },
+      "id": "Field_0ta03vz"
+    },
+    {
+      "text": "=claimReport",
+      "type": "text",
+      "layout": {
+        "row": "Row_19310j8",
+        "columns": null
+      },
+      "id": "Field_1nu4mae"
+    },
+    {
+      "text": "=followupQueryResponse",
+      "type": "text",
+      "layout": {
+        "row": "Row_1nxkhlg",
+        "columns": null
+      },
+      "id": "Field_1adbru6"
+    },
+    {
+      "label": "Action To Take",
+      "values": [
+        {
+          "label": "Approve Claim",
+          "value": "approveClaim"
+        },
+        {
+          "label": "Reject Claim",
+          "value": "rejectClaim"
+        },
+        {
+          "label": "More Information Request",
+          "value": "moreInfo"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_1ezq7dg",
+        "columns": null
+      },
+      "id": "Field_0qn4767",
+      "key": "action"
+    },
+    {
+      "label": "Additional Comment",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_07921aa",
+        "columns": null
+      },
+      "id": "Field_1a1dslh",
+      "key": "clerkFollowup"
+    }
+  ],
+  "type": "default"
+}

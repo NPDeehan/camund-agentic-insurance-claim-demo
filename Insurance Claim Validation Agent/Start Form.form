@@ -1,0 +1,74 @@
+{
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.8.0",
+  "exporter": {
+    "name": "Camunda Web Modeler",
+    "version": "ce5fd89"
+  },
+  "schemaVersion": 19,
+  "id": "Form_1cdxgus",
+  "components": [
+    {
+      "label": "Full Name",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1jeajau",
+        "columns": null
+      },
+      "id": "Field_0sm6ffk",
+      "key": "claim.name"
+    },
+    {
+      "label": "Email",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1jeajau",
+        "columns": null
+      },
+      "id": "Field_1w4mqt2",
+      "key": "claim.emailAddress"
+    },
+    {
+      "label": "Claim Type",
+      "values": [
+        {
+          "label": "Car",
+          "value": "car"
+        },
+        {
+          "label": "Pet",
+          "value": "pet"
+        },
+        {
+          "label": "Home",
+          "value": "home"
+        },
+        {
+          "label": "Work Injury",
+          "value": "workInjury"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_0w9w79l",
+        "columns": null
+      },
+      "id": "Field_01gaea4",
+      "key": "claim.claimType",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Details of the Claim",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_1bfx781",
+        "columns": null
+      },
+      "id": "Field_0kdrdf8",
+      "key": "claim.emailbody"
+    }
+  ],
+  "type": "default"
+}

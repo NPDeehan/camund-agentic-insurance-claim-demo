@@ -1,0 +1,741 @@
+{
+  "$schema": "https://unpkg.com/@camunda/zeebe-element-templates-json-schema/resources/schema.json",
+  "name": "Manage Insurance Policy",
+  "id": "com.example.camunda.manage-insurance-policy",
+  "version": 4,
+  "description": "Create, update, delete, or query insurance policies. Policies can be held by a customer or an external company. Type-specific fields appear automatically based on the selected policy type.",
+  "category": {
+    "id": "connectors",
+    "name": "Connectors"
+  },
+  "appliesTo": [
+    "bpmn:ServiceTask"
+  ],
+  "elementType": {
+    "value": "bpmn:ServiceTask"
+  },
+  "groups": [
+    {
+      "id": "operation",
+      "label": "Operation"
+    },
+    {
+      "id": "query",
+      "label": "Search Filters"
+    },
+    {
+      "id": "core",
+      "label": "Policy Details"
+    },
+    {
+      "id": "holder",
+      "label": "Policy Holder"
+    },
+    {
+      "id": "car",
+      "label": "Vehicle Details  (CAR)"
+    },
+    {
+      "id": "home",
+      "label": "Property Details  (HOME)"
+    },
+    {
+      "id": "pet",
+      "label": "Pet Details  (PET)"
+    },
+    {
+      "id": "lti",
+      "label": "Injury Cover  (LONG_TERM_INJURY)"
+    },
+    {
+      "id": "output",
+      "label": "Output Mapping"
+    },
+    {
+      "id": "errors",
+      "label": "Error Handling"
+    }
+  ],
+  "properties": [
+    {
+      "type": "Hidden",
+      "value": "manage-insurance-policy",
+      "binding": {
+        "type": "zeebe:taskDefinition:type"
+      }
+    },
+    {
+      "id": "operation",
+      "label": "Operation",
+      "description": "Action to perform on an insurance policy.",
+      "type": "Dropdown",
+      "value": "CREATE",
+      "choices": [
+        {
+          "name": "CREATE",
+          "value": "CREATE"
+        },
+        {
+          "name": "UPDATE",
+          "value": "UPDATE"
+        },
+        {
+          "name": "DELETE",
+          "value": "DELETE"
+        },
+        {
+          "name": "QUERY",
+          "value": "QUERY"
+        }
+      ],
+      "group": "operation",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "operation"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "id": "policyIdCreate",
+      "label": "Policy ID",
+      "description": "Optional. Auto-generated when omitted.",
+      "type": "Text",
+      "group": "operation",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "policyId"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "CREATE"
+      }
+    },
+    {
+      "id": "policyIdUpdate",
+      "label": "Policy ID",
+      "description": "Required. ID of the policy to update.",
+      "type": "Text",
+      "group": "operation",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "policyId"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "UPDATE"
+      }
+    },
+    {
+      "id": "policyIdDelete",
+      "label": "Policy ID",
+      "description": "Required. ID of the policy to delete.",
+      "type": "Text",
+      "group": "operation",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "policyId"
+      },
+      "constraints": {
+        "notEmpty": true
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "DELETE"
+      }
+    },
+    {
+      "id": "policyIdQuery",
+      "label": "Policy ID",
+      "description": "Optional. Returns a single policy when provided; otherwise applies other filters.",
+      "type": "Text",
+      "group": "operation",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "policyId"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "QUERY"
+      }
+    },
+    {
+      "id": "queryCustomerId",
+      "label": "Customer ID",
+      "description": "Optional. Filter by the customer who holds the policy. Leave empty to ignore.",
+      "type": "Text",
+      "group": "query",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "customerId"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "QUERY"
+      }
+    },
+    {
+      "id": "queryCompanyId",
+      "label": "Company ID",
+      "description": "Optional. Filter by the external company that holds the policy. Leave empty to ignore.",
+      "type": "Text",
+      "group": "query",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "companyId"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "QUERY"
+      }
+    },
+    {
+      "id": "queryPolicyType",
+      "label": "Policy Type",
+      "description": "Optional. One of: CAR, HOME, PET, LONG_TERM_INJURY. Leave empty to ignore.",
+      "type": "Text",
+      "group": "query",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "policyType"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "QUERY"
+      }
+    },
+    {
+      "id": "queryStatus",
+      "label": "Status",
+      "description": "Optional. One of: ACTIVE, INACTIVE, EXPIRED, CANCELLED. Leave empty to ignore.",
+      "type": "Text",
+      "group": "query",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "status"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "QUERY"
+      }
+    },
+    {
+      "id": "queryHolderType",
+      "label": "Holder Type",
+      "description": "Optional. One of: CUSTOMER, EXTERNAL_COMPANY. Leave empty to ignore.",
+      "type": "Text",
+      "group": "query",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "holderType"
+      },
+      "condition": {
+        "property": "operation",
+        "equals": "QUERY"
+      }
+    },
+    {
+      "id": "policyType",
+      "label": "Policy Type",
+      "description": "Required for CREATE. Selecting a type reveals its dedicated fields below.",
+      "type": "Dropdown",
+      "value": "CAR",
+      "choices": [
+        {
+          "name": "Car Insurance",
+          "value": "CAR"
+        },
+        {
+          "name": "Home Insurance",
+          "value": "HOME"
+        },
+        {
+          "name": "Pet Insurance",
+          "value": "PET"
+        },
+        {
+          "name": "Long Term Injury",
+          "value": "LONG_TERM_INJURY"
+        }
+      ],
+      "group": "core",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "policyType"
+      },
+      "condition": {
+        "property": "operation",
+        "oneOf": [
+          "CREATE",
+          "UPDATE"
+        ]
+      }
+    },
+    {
+      "id": "status",
+      "label": "Status",
+      "description": "Defaults to ACTIVE on CREATE.",
+      "type": "Dropdown",
+      "value": "ACTIVE",
+      "choices": [
+        {
+          "name": "Active",
+          "value": "ACTIVE"
+        },
+        {
+          "name": "Inactive",
+          "value": "INACTIVE"
+        },
+        {
+          "name": "Expired",
+          "value": "EXPIRED"
+        },
+        {
+          "name": "Cancelled",
+          "value": "CANCELLED"
+        }
+      ],
+      "group": "core",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "status"
+      },
+      "condition": {
+        "property": "operation",
+        "oneOf": [
+          "CREATE",
+          "UPDATE"
+        ]
+      }
+    },
+    {
+      "id": "startDate",
+      "label": "Start Date",
+      "description": "Required for CREATE. Format: YYYY-MM-DD.",
+      "type": "Text",
+      "group": "core",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "startDate"
+      },
+      "condition": {
+        "property": "operation",
+        "oneOf": [
+          "CREATE",
+          "UPDATE"
+        ]
+      }
+    },
+    {
+      "id": "endDate",
+      "label": "End Date",
+      "description": "Optional. Format: YYYY-MM-DD. Leave blank for open-ended policies.",
+      "type": "Text",
+      "group": "core",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "endDate"
+      },
+      "condition": {
+        "property": "operation",
+        "oneOf": [
+          "CREATE",
+          "UPDATE"
+        ]
+      }
+    },
+    {
+      "id": "premiumAmount",
+      "label": "Premium Amount",
+      "description": "Required for CREATE. Monthly premium in the policy currency.",
+      "type": "Text",
+      "group": "core",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "premiumAmount"
+      },
+      "condition": {
+        "property": "operation",
+        "oneOf": [
+          "CREATE",
+          "UPDATE"
+        ]
+      }
+    },
+    {
+      "id": "coverageAmount",
+      "label": "Coverage Amount",
+      "description": "Required for CREATE. Maximum payout amount.",
+      "type": "Text",
+      "group": "core",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "coverageAmount"
+      },
+      "condition": {
+        "property": "operation",
+        "oneOf": [
+          "CREATE",
+          "UPDATE"
+        ]
+      }
+    },
+    {
+      "id": "notes",
+      "label": "Notes",
+      "description": "Optional free-text notes.",
+      "type": "Text",
+      "group": "core",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "notes"
+      },
+      "condition": {
+        "property": "operation",
+        "oneOf": [
+          "CREATE",
+          "UPDATE"
+        ]
+      }
+    },
+    {
+      "id": "holderType",
+      "label": "Holder Type",
+      "description": "Required for CREATE. Whether the policyholder is a customer or an external company.",
+      "type": "Dropdown",
+      "value": "CUSTOMER",
+      "choices": [
+        {
+          "name": "Customer",
+          "value": "CUSTOMER"
+        },
+        {
+          "name": "External Company",
+          "value": "EXTERNAL_COMPANY"
+        }
+      ],
+      "group": "holder",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "holderType"
+      },
+      "condition": {
+        "property": "operation",
+        "oneOf": [
+          "CREATE",
+          "UPDATE"
+        ]
+      }
+    },
+    {
+      "id": "customerId",
+      "label": "Customer ID",
+      "description": "Required when Holder Type is Customer.",
+      "type": "Text",
+      "group": "holder",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "customerId"
+      },
+      "condition": {
+        "property": "operation",
+        "oneOf": [
+          "CREATE",
+          "UPDATE"
+        ]
+      }
+    },
+    {
+      "id": "companyId",
+      "label": "Company ID",
+      "description": "Required when Holder Type is External Company.",
+      "type": "Text",
+      "group": "holder",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "companyId"
+      },
+      "condition": {
+        "property": "operation",
+        "oneOf": [
+          "CREATE",
+          "UPDATE"
+        ]
+      }
+    },
+    {
+      "id": "vehicleRegistration",
+      "label": "Vehicle Registration",
+      "description": "e.g. 191-D-12345",
+      "type": "Text",
+      "group": "car",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "vehicleRegistration"
+      },
+      "condition": {
+        "property": "policyType",
+        "equals": "CAR"
+      }
+    },
+    {
+      "id": "vehicleMake",
+      "label": "Vehicle Make",
+      "description": "e.g. Toyota",
+      "type": "Text",
+      "group": "car",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "vehicleMake"
+      },
+      "condition": {
+        "property": "policyType",
+        "equals": "CAR"
+      }
+    },
+    {
+      "id": "vehicleModel",
+      "label": "Vehicle Model",
+      "description": "e.g. Corolla",
+      "type": "Text",
+      "group": "car",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "vehicleModel"
+      },
+      "condition": {
+        "property": "policyType",
+        "equals": "CAR"
+      }
+    },
+    {
+      "id": "vehicleYear",
+      "label": "Vehicle Year",
+      "description": "e.g. 2022",
+      "type": "Text",
+      "group": "car",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "vehicleYear"
+      },
+      "condition": {
+        "property": "policyType",
+        "equals": "CAR"
+      }
+    },
+    {
+      "id": "propertyAddress",
+      "label": "Property Address",
+      "description": "Full address of the insured property.",
+      "type": "Text",
+      "group": "home",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "propertyAddress"
+      },
+      "condition": {
+        "property": "policyType",
+        "equals": "HOME"
+      }
+    },
+    {
+      "id": "propertyType",
+      "label": "Property Type",
+      "description": "e.g. House, Apartment, Bungalow",
+      "type": "Text",
+      "group": "home",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "propertyType"
+      },
+      "condition": {
+        "property": "policyType",
+        "equals": "HOME"
+      }
+    },
+    {
+      "id": "propertyValue",
+      "label": "Property Value",
+      "description": "Estimated market value of the property.",
+      "type": "Text",
+      "group": "home",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "propertyValue"
+      },
+      "condition": {
+        "property": "policyType",
+        "equals": "HOME"
+      }
+    },
+    {
+      "id": "petName",
+      "label": "Pet Name",
+      "type": "Text",
+      "group": "pet",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "petName"
+      },
+      "condition": {
+        "property": "policyType",
+        "equals": "PET"
+      }
+    },
+    {
+      "id": "petSpecies",
+      "label": "Pet Species",
+      "description": "e.g. Dog, Cat, Rabbit",
+      "type": "Text",
+      "group": "pet",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "petSpecies"
+      },
+      "condition": {
+        "property": "policyType",
+        "equals": "PET"
+      }
+    },
+    {
+      "id": "petBreed",
+      "label": "Pet Breed",
+      "description": "e.g. Labrador, Siamese",
+      "type": "Text",
+      "group": "pet",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "petBreed"
+      },
+      "condition": {
+        "property": "policyType",
+        "equals": "PET"
+      }
+    },
+    {
+      "id": "petAge",
+      "label": "Pet Age (years)",
+      "type": "Text",
+      "group": "pet",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "petAge"
+      },
+      "condition": {
+        "property": "policyType",
+        "equals": "PET"
+      }
+    },
+    {
+      "id": "monthlyBenefit",
+      "label": "Monthly Benefit",
+      "description": "Monthly payout amount while the claimant is unable to work.",
+      "type": "Text",
+      "group": "lti",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "monthlyBenefit"
+      },
+      "condition": {
+        "property": "policyType",
+        "equals": "LONG_TERM_INJURY"
+      }
+    },
+    {
+      "id": "waitingPeriodDays",
+      "label": "Waiting Period (days)",
+      "description": "Number of days after a claim before benefit payments begin.",
+      "type": "Text",
+      "group": "lti",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "waitingPeriodDays"
+      },
+      "condition": {
+        "property": "policyType",
+        "equals": "LONG_TERM_INJURY"
+      }
+    },
+    {
+      "id": "maxBenefitPeriodMonths",
+      "label": "Max Benefit Period (months)",
+      "description": "Maximum number of months benefit payments will be made.",
+      "type": "Text",
+      "group": "lti",
+      "feel": "optional",
+      "binding": {
+        "type": "zeebe:input",
+        "name": "maxBenefitPeriodMonths"
+      },
+      "condition": {
+        "property": "policyType",
+        "equals": "LONG_TERM_INJURY"
+      }
+    },
+    {
+      "id": "policyCrudResultOutput",
+      "label": "Policy Result Variable",
+      "description": "Process variable that receives the full response (policy data, status, message).",
+      "type": "String",
+      "group": "output",
+      "value": "policyCrudResult",
+      "binding": {
+        "type": "zeebe:output",
+        "source": "=policyCrudResult",
+        "target": "policyCrudResult"
+      },
+      "constraints": {
+        "notEmpty": true
+      }
+    },
+    {
+      "id": "operationStatusOutput",
+      "label": "Operation Status Variable",
+      "description": "Shortcut variable: SUCCESS, NOT_FOUND, VALIDATION_ERROR, or ERROR.",
+      "type": "String",
+      "group": "output",
+      "value": "operationStatus",
+      "binding": {
+        "type": "zeebe:output",
+        "source": "=operationStatus",
+        "target": "operationStatus"
+      }
+    }
+  ],
+  "icon": {
+    "contents": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%230d6efd' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'%3E%3C/path%3E%3C/svg%3E"
+  }
+}
