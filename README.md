@@ -2,6 +2,8 @@
 
 A Camunda 8 demo showcasing how to build AI-powered agentic workflows for insurance claims processing. The processes use Camunda's Ad-hoc Subprocess pattern to give AI agents access to tools modelled directly as BPMN tasks, with human-in-the-loop oversight at every critical decision point.
 
+![process](./img/Insurance%20Claim%20Validation%20Agent.png)
+
 ---
 
 ## What This Demo Shows
